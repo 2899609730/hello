@@ -6,25 +6,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Method;
+
+import static java.util.Objects.nonNull;
 
 @WebServlet("/test")
 public class TestServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String methodName = req.getParameter("methodName");
-        //2.业务处理
-        //判断 执行对应的方法
-        if ("addCourse".equals(methodName)) {
-            addCourse(req, resp);
 
-        } else if ("findByStatus".equals(methodName)) {
-            findByName(req, resp);
-
-        } else if ("findByStatus".equals(methodName)) {
-            findByStatus(req, resp);
-
-        } else {
-            System.out.println("访问的功能不存在!");
+        if (nonNull(methodName)){
+            Class testServletClass = this.getClass();
+            try {
+                Method method = testServletClass.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+                method.invoke(this,req,resp);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
