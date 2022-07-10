@@ -11,21 +11,7 @@ import java.lang.reflect.Method;
 import static java.util.Objects.nonNull;
 
 @WebServlet("/test")
-public class TestServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String methodName = req.getParameter("methodName");
-
-        if (nonNull(methodName)){
-            Class testServletClass = this.getClass();
-            try {
-                Method method = testServletClass.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
-                method.invoke(this,req,resp);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+public class TestServlet extends BaseServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
