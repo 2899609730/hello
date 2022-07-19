@@ -15,9 +15,9 @@ public class BaseServlet extends HttpServlet {
         String methodName = req.getParameter("methodName");
 
         if (nonNull(methodName)){
-            Class testServletClass = this.getClass();
+            Class servletClass = this.getClass();
             try {
-                Method method = testServletClass.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+                Method method = servletClass.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
                 method.invoke(this,req,resp);
             } catch (Exception e) {
                 System.out.println("请求的功能不存在! !");

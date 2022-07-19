@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "courseServlet", value = "/course")
-public class CourseServlet extends BaseServlet{
+public class CourseServlet extends BaseServlet {
     //查询课程信息列表
     public void findCourseList(HttpServletRequest request, HttpServletResponse response) {
 
@@ -32,6 +32,31 @@ public class CourseServlet extends BaseServlet{
             String result = JSON.toJSONString(courseList, filter);
             response.getWriter().print(result);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //根据条件查询课程信息
+    public void findByCourseNameOrStatus(HttpServletRequest request, HttpServletResponse response) {
+
+
+        //1.接收参数
+        String courseName = request.getParameter("course_name");
+        String status = request.getParameter("status");
+
+        //2.业务处理
+        CourseService cs = new CourseServiceImpl();
+        List<Course> courseList = cs.findByCourseNameAndStatus(courseName, status);
+
+        //3.返回结果 响应JSON格式数据
+        //使用 SimplePropertyPreFilter,指定要转换为JSON的字段
+        SimplePropertyPreFilter filter =
+                new SimplePropertyPreFilter(Course.class, "id", "course_name", "price", "sort_num", "status");
+
+        String result = JSON.toJSONString(courseList, filter);
+        try {
+            response.getWriter().println(result);
         } catch (IOException e) {
             e.printStackTrace();
         }
