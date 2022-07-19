@@ -8,4 +8,6 @@ public interface CourseService {
     public List<Course> findCourseList();
 
     public List<Course> findByCourseNameAndStatus(String courseName, String status);
+
+    public String saveCourseSalesInfo(Course course);
 }

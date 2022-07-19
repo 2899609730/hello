@@ -12,4 +12,7 @@ public interface CourseDao {
      * 根据课程名称,课程状态 查询课程信息
      */
     public List<Course> findByCourseNameAndStatus(String courseName, String status);
+
+    //保存课程营销信息
+    public int saveCourseSalesInfo(Course course);
 }
