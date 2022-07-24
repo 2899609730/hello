@@ -48,7 +48,7 @@ public class FileUploadServlet extends HttpServlet {
                             String newFileName = UUIDUtils.getUUID() + "_" + fileName;
                             //获取输入流
                             InputStream inputStream = fileItem.getInputStream();
-
+                            String realPath = this.getServletContext().getRealPath("/");
                             //创建输出流 输出到H盘
                             FileOutputStream outputStream = new FileOutputStream("C:/Users/Mr.Fox/Desktop/upload/" + newFileName);
                             IOUtils.copy(inputStream, outputStream);

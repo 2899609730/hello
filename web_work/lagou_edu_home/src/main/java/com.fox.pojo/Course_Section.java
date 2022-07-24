@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *  课程章节
@@ -70,5 +72,7 @@ public class Course_Section  implements Serializable {
   private int is_visible; //是否可见
   @JSONField(serialize = false)
   private String last_operator; //最后操作者
-
+  //添加一个Course类型的属性
+  private Course course;
+  List<Course_Lesson> lessonList = new ArrayList<>();
 }

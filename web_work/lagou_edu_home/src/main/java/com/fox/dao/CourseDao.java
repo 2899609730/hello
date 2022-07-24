@@ -15,4 +15,12 @@ public interface CourseDao {
 
     //保存课程营销信息
     public int saveCourseSalesInfo(Course course);
+
+    //根据课程ID 查询课程信息
+    public Course findCourseById(int id);
+
+    //修改课程营销信息
+    public int updateCourseSalesInfo(Course course);
+    //修改课程状态
+    int updateCourseStatus(Course course);
 }

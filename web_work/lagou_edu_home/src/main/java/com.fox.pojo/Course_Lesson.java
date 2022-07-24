@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /*
 * 课时信息类
@@ -98,5 +100,6 @@ public class Course_Lesson  implements Serializable {
   private int is_timing_publish; //是否定时发布
   @JSONField(serialize = false)
   private String publish_time;  //定时发布时间
+  private Course_Section course_section;
 
 }
