@@ -40,7 +40,7 @@ public class CourseServlet extends BaseServlet {
     }
 
     //根据条件查询课程信息
-    public void findByCourseNameOrStatus(HttpServletRequest request, HttpServletResponse response) {
+    public void findByCourseNameAndStatus(HttpServletRequest request, HttpServletResponse response) {
 
 
         //1.接收参数

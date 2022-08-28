@@ -6,6 +6,8 @@ import com.fox.pojo.Course;
 import com.fox.utils.DateUtils;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class MyTest {
@@ -17,6 +19,7 @@ public class MyTest {
         for (Course cours : courses) {
             System.out.println(cours.getId());
         }
+
     }
 
     //测试保存课程营销信息
